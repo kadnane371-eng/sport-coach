@@ -1,8 +1,10 @@
 import { View, Text, StyleSheet, Button } from "react-native";
 import ProgressRing from "../../components/ProgressRing";
 import { useStore } from "../../store/useStore";
+import usePedometer from "../../hooks/usePedometer";
 
 export default function Home() {
+  usePedometer();
   const { steps, dailyGoal, distance, calories } = useStore();
 
   const setSteps = useStore((state) => state.setSteps);
