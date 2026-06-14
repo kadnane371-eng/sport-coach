@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet,} from "react-native";
 import ProgressRing from "../../components/ProgressRing";
 import { useStore } from "../../store/useStore";
 import usePedometer from "../../hooks/usePedometer";
@@ -7,7 +7,7 @@ export default function Home() {
   usePedometer();
   const { steps, dailyGoal, distance, calories } = useStore();
 
-  const setSteps = useStore((state) => state.setSteps);
+  
 
   const progress = Math.min(
     (steps / dailyGoal) * 100,
@@ -54,13 +54,10 @@ export default function Home() {
         </View>
       </View>
 
-      <View style={{ marginTop: 20 }}>
-        <Button
-          title="Add 100 Steps"
-          onPress={() => setSteps(steps + 100)}
-        />
+      
+        
       </View>
-    </View>
+    
   );
 }
 

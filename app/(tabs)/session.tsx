@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import { useStore } from "../../store/useStore";
 
+
 export default function Session() {
   const [seconds, setSeconds] = useState(0);
   const [running, setRunning] = useState(false);
@@ -45,15 +46,15 @@ export default function Session() {
   setSeconds(0);
 };
 
+
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        Session GPS
-      </Text>
-
       <Text style={styles.timer}>
         {seconds}s
       </Text>
+
+      
 
       <View style={styles.buttons}>
         <Button
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 20,
+    
   },
 
   timer: {

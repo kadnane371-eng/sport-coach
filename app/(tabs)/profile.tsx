@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import { useStore } from "../../store/useStore";
 import { useEffect } from "react";
-import * as ImagePicker from "expo-image-picker";
 
 export default function Profile() {
   const sessions = useStore((state) => state.sessions);
@@ -21,29 +20,9 @@ export default function Profile() {
     (state) => state.loadSessions
   );
 
-  const profileImage = useStore(
-    (state) => state.profileImage
-  );
-
-  const setProfileImage = useStore(
-    (state) => state.setProfileImage
-  );
-
-  const pickImage = async () => {
-    const result =
-      await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ["images"],
-        quality: 1,
-      });
-
-    if (!result.canceled) {
-      setProfileImage(result.assets[0].uri);
-    }
-  };
-
   useEffect(() => {
     loadSessions();
-  }, [loadSessions]);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -51,16 +30,9 @@ export default function Profile() {
         History
       </Text>
 
-      {profileImage && (
-        <Image
-          source={{ uri:'assets/sport.jpg' }}
-          style={styles.image}
-        />
-      )}
-
-      <Button
-        title="Choose Photo"
-        onPress={pickImage}
+      <Image
+        source={require("../../assets/sport.jpg")}
+        style={styles.image}
       />
 
       <FlatList
@@ -98,14 +70,17 @@ const styles = StyleSheet.create({
 
   title: {
     color: "#CCFF00",
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: "bold",
     marginBottom: 20,
+     textAlign: "center",
+    
+    
   },
 
   image: {
-    width: 90,
-    height: 90,
+    width: 120,
+    height: 120,
     borderRadius: 60,
     alignSelf: "center",
     marginBottom: 20,
